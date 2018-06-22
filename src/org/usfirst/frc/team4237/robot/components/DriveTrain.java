@@ -17,7 +17,7 @@ public class DriveTrain extends DifferentialDrive
 	private static WPI_TalonSRX rightMasterMotor = new WPI_TalonSRX(Constants.Ports.RIGHT_MASTER_MOTOR_PORT);;
 	private static WPI_TalonSRX rightFollowerMotor = new WPI_TalonSRX(Constants.Ports.RIGHT_FOLLOWER_MOTOR_PORT);;
 
-	private GearBox gearBox = new GearBox(GearBox.Ports.LOW_SPEED, GearBox.Ports.HIGH_SPEED);
+	private GearBox gearBox = new GearBox(GearBox.Constants.Ports.LOW_SPEED, GearBox.Constants.Ports.HIGH_SPEED);
 
 	private boolean isDoneDriving = false;
 
@@ -54,17 +54,17 @@ public class DriveTrain extends DifferentialDrive
 
 	public void shiftSpeed()
 	{
-		if (gearBox.getGearPosition() == GearBox.GearPosition.kLow)
+		if (gearBox.getGearPosition() == GearBox.Constants.GearPosition.kLow)
 		{
 			System.out.println("Retracting gearbox");
 			gearBox.retract();
 		}
-		else if (gearBox.getGearPosition() == GearBox.GearPosition.kHigh || gearBox.getGearPosition() == GearBox.GearPosition.kOff)
+		else if (gearBox.getGearPosition() == GearBox.Constants.GearPosition.kHigh || gearBox.getGearPosition() == GearBox.Constants.GearPosition.kOff)
 		{
 			System.out.println("Extending gearbox");
 			gearBox.extend();
 		}
-		else if (gearBox.getGearPosition() == GearBox.GearPosition.kError)
+		else if (gearBox.getGearPosition() == GearBox.Constants.GearPosition.kError)
 		{
 			System.out.println("Error shifting");
 		}
@@ -280,7 +280,7 @@ public class DriveTrain extends DifferentialDrive
 	
 	public boolean getGearPosition()
 	{
-		if (this.gearBox.getGearPosition() == GearBox.GearPosition.kLow)
+		if (this.gearBox.getGearPosition() == GearBox.Constants.GearPosition.kLow)
 		{
 			return false;
 		}
