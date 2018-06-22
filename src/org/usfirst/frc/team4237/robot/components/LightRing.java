@@ -11,49 +11,51 @@ import edu.wpi.first.wpilibj.DigitalOutput;
  */
 public class LightRing
 {
-	public enum Voltage {k068v, k084v, k116v, k132v, k135v};
-	private DigitalOutput mOnOffPin;
-	private DigitalOutput mOnes;
-	private DigitalOutput mTwos;
-	private DigitalOutput mFours;
+	private DigitalOutput onOffPin = new DigitalOutput(Constants.Ports.ON_OFF);
+	private DigitalOutput onesPin = new DigitalOutput(Constants.Ports.ONES);
+	private DigitalOutput twosPin = new DigitalOutput(Constants.Ports.TWOS);
+	private DigitalOutput foursPin = new DigitalOutput(Constants.Ports.FOURS);
 
 	private boolean[] pins = {false, false, false};
-	
-	public class Ports
-	{
-		public static final int ON_OFF = 10;
-		public static final int ONES = 12;
-		public static final int TWOS = 13;
-		public static final int FOURS = 14;
-	}
 
-	public LightRing(int onOffPort, int foursPort, int twosPort, int onesPort)
-	{
-		mOnOffPin = new DigitalOutput(onOffPort);
-		mFours = new DigitalOutput(foursPort);
-		mTwos = new DigitalOutput(twosPort);
-		mOnes = new DigitalOutput(onesPort);
-		Util.printObjectInfo(this);
-	}
+	private static LightRing instance = new LightRing();
+	public static LightRing getInstance()
+    {
+        return instance;
+    }
 
-	public void setIntensity(Voltage level)
+	public void setIntensity(Constants.Voltage level)
 	{
 		pins[0] = ((level.ordinal() / 4) % 2) == 1; //Value for pin 14
 		pins[1] = ((level.ordinal() / 2) % 2) == 1; //Value for pin 13
 		pins[2] = (level.ordinal() % 2) == 1;
 
-		mFours.set(pins[0]);
-		mTwos.set(pins[1]);
-		mOnes.set(pins[2]);
+		foursPin.set(pins[0]);
+		twosPin.set(pins[1]);
+		onesPin.set(pins[2]);
 	}
 
 	public void turnLightRingOn()
 	{
-		mOnOffPin.set(true);
+		onOffPin.set(true);
 	}
 
 	public void turnLightsOff()
 	{
-		mOnOffPin.set(false);
+		onOffPin.set(false);
+	}
+
+	public static class Constants
+	{
+
+		public enum Voltage {k068v, k084v, k116v, k132v, k135v};
+
+		public class Ports
+		{
+			public static final int ON_OFF = 10;
+			public static final int ONES = 12;
+			public static final int TWOS = 13;
+			public static final int FOURS = 14;
+		}
 	}
 }

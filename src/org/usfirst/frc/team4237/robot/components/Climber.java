@@ -1,5 +1,8 @@
 package org.usfirst.frc.team4237.robot.components;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import org.usfirst.frc.team4237.robot.Util;
 
 import com.ctre.CANTalon;
@@ -9,45 +12,35 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Climber
 {
-	private CANTalon mMasterClimber;
-	private CANTalon mSlaveClimber;
-	private Timer mAmpTimer;
-	
-	public class Ports
+	private WPI_TalonSRX masterMotor = new WPI_TalonSRX(Constants.Ports.CLIMBER_MASTER);
+	private WPI_TalonSRX followerMotor = new WPI_TalonSRX(Constants.Ports.CLIMBER_SLAVE);
+	private Timer mAmpTimer = new Timer();
+
+	private static Climber instance = new Climber();
+	public static Climber getInstance()
 	{
-		public static final int CLIMBER_MASTER = 32;
-		public static final int CLIMBER_SLAVE = 33;
+		return instance;
 	}
-	
-	public Climber(int masterClimber, int slaveClimber)
+
+	private Climber()
 	{
-		Util.printObjectInfo(this);
-		mMasterClimber = new CANTalon(masterClimber);
-		mSlaveClimber = new CANTalon(slaveClimber);
-		
-		mMasterClimber.enableBrakeMode(true);
-		mSlaveClimber.enableBrakeMode(true);
-		mSlaveClimber.changeControlMode(CANTalon.TalonControlMode.Follower);
-		mSlaveClimber.set(masterClimber);
-		mMasterClimber.setEncPosition(0);
-		
-		mMasterClimber.setStatusFrameRateMs(CANTalon.StatusFrameRate.AnalogTempVbat, 10);
-		mSlaveClimber.setStatusFrameRateMs(CANTalon.StatusFrameRate.AnalogTempVbat, 10);
-		
-		mMasterClimber.setStatusFrameRateMs(CANTalon.StatusFrameRate.General, 10);
-		mSlaveClimber.setStatusFrameRateMs(CANTalon.StatusFrameRate.General, 10);
-		
-		mAmpTimer = new Timer();
+
+		masterMotor.setNeutralMode(NeutralMode.Brake);
+		followerMotor.follow(masterMotor);
+
+		masterMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
+		masterMotor.setSelectedSensorPosition(0, 0, 0);
+
 		mAmpTimer.stop();
 		mAmpTimer.reset();
 	}
 	
 	public void climbRope(double speed)
 	{
-		double masterCurrent = mMasterClimber.getOutputCurrent();
-		double slaveCurrent = mSlaveClimber.getOutputCurrent();
-		double masterVoltage = mMasterClimber.getBusVoltage();
-		double slaveVoltage = mSlaveClimber.getBusVoltage();
+		double masterCurrent = masterMotor.getOutputCurrent();
+		double slaveCurrent = followerMotor.getOutputCurrent();
+		double masterVoltage = masterMotor.getBusVoltage();
+		double slaveVoltage = followerMotor.getBusVoltage();
 		
 		System.out.println("Master Amperage: " + masterCurrent);
 		System.out.println(" Master Voltage: " + masterVoltage);
@@ -68,16 +61,25 @@ public class Climber
 		{
 			mAmpTimer.start();
 		}
-		mMasterClimber.set(-speed);
+		masterMotor.set(-speed);
 	}
 	
 	public int getEncoder()
 	{
-		return -mMasterClimber.getEncPosition();
+		return -masterMotor.getSelectedSensorPosition(0);
 	}
 	
 	public void stopClimbing()
 	{
-		mMasterClimber.set(0);
+		masterMotor.set(0);
+	}
+
+	public static class Constants
+	{
+		public class Ports
+		{
+			public static final int CLIMBER_MASTER = 32;
+			public static final int CLIMBER_SLAVE = 33;
+		}
 	}
 }

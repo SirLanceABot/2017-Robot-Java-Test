@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4237.robot.components;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.StatusFrame;
@@ -25,10 +26,15 @@ public class DriveTrain extends DifferentialDrive
 
 	private boolean isDoneDriving = false;
 
-	private ITG3200 gyro;
+    private ITG3200 gyro = ITG3200.getInstance();
 
-	
-	public DriveTrain(int leftMaster, int leftSlave, int rightMaster, int rightSlave, int highSpeed, int lowSpeed, I2C.Port gyroPort, double sensitivity)
+    private static DriveTrain instance = new DriveTrain();
+	public static DriveTrain getInstance()
+    {
+        return instance;
+    }
+
+	private DriveTrain()
 	{
 		super(leftMasterMotor, rightMasterMotor);
 
@@ -88,7 +94,7 @@ public class DriveTrain extends DifferentialDrive
 			Util.wait(0.1);
 			arcadeDrive(0, speed);
 		}
-		else if (getDistance() >= (angle / 360.0) * WHEEL_BASE_CIRCUMFERENCE);
+		else if (getDistance() >= (angle / 360.0) * Constants.WHEEL_BASE_CIRCUMFERENCE);
 		{
 			stopDriving();
 			resetEncoders();
@@ -139,7 +145,7 @@ public class DriveTrain extends DifferentialDrive
 				resetEncoders();
 				tankDrive(speed, -speed);
 			}
-			else if (Math.abs(leftMasterMotor.getPosition()) >= (angle / 360) * WHEEL_BASE_CIRCUMFERENCE || Math.abs(rightMasterMotor.getPosition()) >= (angle / 360.0) * WHEEL_BASE_CIRCUMFERENCE)
+			else if (Math.abs(leftMasterMotor.getSelectedSensorPosition(0)) >= (angle / 360) * Constants.WHEEL_BASE_CIRCUMFERENCE || Math.abs(rightMasterMotor.getSelectedSensorPosition(0)) >= (angle / 360.0) * Constants.WHEEL_BASE_CIRCUMFERENCE)
 			{
 				stopDriving();
 				resetEncoders();
@@ -333,17 +339,15 @@ public class DriveTrain extends DifferentialDrive
 	
 	public void setControlModeVoltage()
 	{
-		leftMasterMotor.changeControlMode(CANTalon.TalonControlMode.Voltage);
-		rightMasterMotor.changeControlMode(CANTalon.TalonControlMode.Voltage);
-
-		leftMasterMotor.
+		leftMasterMotor.set(ControlMode.Current, 0.0);
+		rightMasterMotor.set(ControlMode.Current, 0.0);
 	}
 	
 	public void setControlMovePercentVBus()
 	{
-		leftMasterMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-		rightMasterMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-	}
+		leftMasterMotor.set(ControlMode.PercentOutput, 0.0);
+        rightMasterMotor.set(ControlMode.PercentOutput, 0.0);
+    }
 
 	public static class Constants
 	{

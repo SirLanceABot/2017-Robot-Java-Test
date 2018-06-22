@@ -25,7 +25,7 @@ public class Robot extends IterativeRobot
 	enum ExposureMode {kUp, kDown};
 
 	//TODO: Complete this enum
-	enum AutoGearChoice 
+	enum AutoGearChoice
 	{
 		kLeft(3), kCenter(1), kRight(2), kNone(4);
 		private final int num;
@@ -51,14 +51,14 @@ public class Robot extends IterativeRobot
 	public static final double SENSITIVITY = ITG3200.Constants.SENSITIVITY_SCALE_FACTOR;
 	public static final int NUM_TAPS = 20;
 
-	private DriverXbox xbox;
-	private DriveTrain drivetrain;
-	private GearHolder gearHolder;
-	private Climber climber;
+	private DriverXbox xbox = DriverXbox.getInstance();
+	private DriveTrain drivetrain = DriveTrain.getInstance();
+	private GearHolder gearHolder = GearHolder.getInstance();
+	private Climber climber = Climber.getInstance();
 	private Vision vision;
-	private Compressor compressor;
-	private DriverStation driverStation;
-	private LightRing lightRing;
+	private Compressor compressor = new Compressor();
+	private DriverStation driverStation = DriverStation.getInstance();
+	private LightRing lightRing = LightRing.getInstance();
 
 	private VisionStage visionStage;
 	private AutoGearChoice gearPosition;
@@ -75,8 +75,8 @@ public class Robot extends IterativeRobot
 	private boolean isDroppingGear = false;
 	private ExposureMode exposureMode = ExposureMode.kDown;
 
-	private LightRing.Voltage lightIntensity = LightRing.Voltage.k135v;
-	private LightRing.Voltage previousLightIntensity = LightRing.Voltage.k135v;
+	private LightRing.Constants.Voltage lightIntensity = LightRing.Constants.Voltage.k135v;
+	private LightRing.Constants.Voltage previousLightIntensity = LightRing.Constants.Voltage.k135v;
 
 	int loop = 1;
 	double move;
@@ -84,31 +84,8 @@ public class Robot extends IterativeRobot
 
 	public Robot()
 	{
-		drivetrain = new DriveTrain(
-				DriveTrain.Ports.LEFT_DRIVE_MASTER,
-				DriveTrain.Ports.LEFT_DRIVE_SLAVE_1,			
-				DriveTrain.Ports.RIGHT_DRIVE_MASTER,
-				DriveTrain.Ports.RIGHT_DRIVE_SLAVE_1,
-				GearBox.Ports.HIGH_SPEED,
-				GearBox.Ports.LOW_SPEED,
-				SIX_DOF,
-				SENSITIVITY
-				);
 
-		xbox = DriverXbox.getInstance();
-
-		gearHolder = GearHolder.getInstance();
-
-		climber = new Climber(Climber.Ports.CLIMBER_MASTER, Climber.Ports.CLIMBER_SLAVE);
 		vision = new Vision();
-		compressor = new Compressor();
-		driverStation = DriverStation.getInstance();
-		lightRing = new LightRing(
-				LightRing.Ports.ON_OFF,
-				LightRing.Ports.FOURS,
-				LightRing.Ports.TWOS,
-				LightRing.Ports.ONES
-				);
 
 		compressor.start();
 	}
@@ -136,8 +113,6 @@ public class Robot extends IterativeRobot
 		//A giant try-catch loop is the new way to do things
 		try
 		{
-			updateXbox();
-
 			move = xbox.getRawAxis(Xbox.Constants.LEFT_STICK_Y_AXIS);
 			rotate = xbox.getRawAxis(Xbox.Constants.RIGHT_STICK_X_AXIS);
 
@@ -162,11 +137,11 @@ public class Robot extends IterativeRobot
 			}
 
 
-			if (xbox.isTriggerPressed(XboxJoystick.RIGHT_TRIGGER))
+			if (Math.abs(xbox.getRawAxis(Xbox.Constants.RIGHT_TRIGGER_AXIS)) > 0.1)
 			{
 				System.out.println("Climbing");
 				compressor.stop();
-				climber.climbRope(xbox.getTrigger(XboxJoystick.RIGHT_TRIGGER));
+				climber.climbRope(Math.abs(xbox.getRawAxis(Xbox.Constants.RIGHT_TRIGGER_AXIS)));
 			}
 			else
 			{
@@ -198,7 +173,7 @@ public class Robot extends IterativeRobot
 		System.out.println("Battery Voltage: " + driverStation.getBatteryVoltage());
 		exposureMode = ExposureMode.kDown;
 		lightRing.turnLightRingOn();
-		lightRing.setIntensity(LightRing.Voltage.k135v);
+		lightRing.setIntensity(LightRing.Constants.Voltage.k135v);
 		vision.visionThread();
 		
 		switch(driverStation.getAlliance())
@@ -250,7 +225,7 @@ public class Robot extends IterativeRobot
 		//vision.resetPiTimer();
 		
 		lightRing.turnLightRingOn();
-		lightRing.setIntensity(LightRing.Voltage.k135v);
+		lightRing.setIntensity(LightRing.Constants.Voltage.k135v);
 		
 		drivetrain.resetEncoders();
 		drivetrain.makeIsDoneDrivingTrue();
@@ -267,9 +242,9 @@ public class Robot extends IterativeRobot
 			drivetrain.makeIsDoneDrivingTrue();
 			drivetrain.resetEncoders();
 			
-			while (mGearHolder.dropGearSequence()){}
+			while (gearHolder.dropGearSequence()){}
 			drivetrain.driveDistance(Autonomous.BACKWARD_SPEED, 12.0);
-			mGearHolder.close();
+			gearHolder.close();
 			
 			if (drivetrain.isGyroWorking())
 			{
@@ -350,33 +325,5 @@ public class Robot extends IterativeRobot
 	void closeGearHolder()
 	{
 
-	}
-
-	/**
-	 * These replace systemCheck()
-	 */
-	public void testInit()
-	{
-		System.out.println("Entering test mode");
-	}
-
-	public void testPeriodic()
-	{
-		updateXbox();
-		System.out.println("Left bumper previous state: " + this.previousButtonMap.get(XboxJoystick.LEFT_BUMPER));
-		System.out.println("Left bumper current state: " + xbox.getRawButton(XboxJoystick.LEFT_BUMPER));
-		if (xbox.getRawButton(XboxJoystick.LEFT_BUMPER) == true && this.previousButtonMap.get(XboxJoystick.LEFT_BUMPER) == false)
-		{
-			System.out.println("Shifting");
-		}
-	}
-	
-	public void updateXbox()
-	{
-		for(int i : XboxJoystick.BUTTON_ARRAY)
-		{
-			previousButtonMap.put(i, buttonMap.get(i));
-			buttonMap.put(i, xbox.getRawButton(i));
-		}
 	}
 }
