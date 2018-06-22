@@ -3,9 +3,6 @@ package org.usfirst.frc.team4237.robot.components;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import org.usfirst.frc.team4237.robot.Util;
-
-import com.ctre.CANTalon;
 
 //import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Timer;

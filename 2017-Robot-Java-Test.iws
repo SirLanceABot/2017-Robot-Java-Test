@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f29082-3bf7-4233-9cb8-a46d07c6698d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/2017-Robot-Java-Test.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/2017-Robot-Java-Test.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2017-Robot-Java-Test.iws" beforeDir="false" afterPath="$PROJECT_DIR$/2017-Robot-Java-Test.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/Vision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/Vision.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/Climber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/Climber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/DriveTrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/DriveTrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/GearBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/GearBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/LightRing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/LightRing.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -62,11 +65,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Robot.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Robot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/Robot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4693">
-              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="48" />
+            <state relative-caret-position="144">
+              <caret line="235" column="29" selection-start-line="235" selection-start-column="29" selection-end-line="235" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1069#1070#0" expanded="true" />
@@ -78,11 +81,29 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Vision.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/Vision.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="799">
+              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="LightRing.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/LightRing.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+              <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
               <folding>
                 <element signature="e#697#698#0" expanded="true" />
                 <element signature="e#728#729#0" expanded="true" />
@@ -95,7 +116,7 @@
         <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/Climber.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
               <folding>
                 <element signature="e#686#687#0" expanded="true" />
                 <element signature="e#708#709#0" expanded="true" />
@@ -107,8 +128,8 @@
       <file leaf-file-name="DriveTrain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/DriveTrain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+            <state relative-caret-position="220">
+              <caret line="209" column="28" selection-start-line="209" selection-start-column="28" selection-end-line="209" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1335#1336#0" expanded="true" />
@@ -130,8 +151,12 @@
       <file leaf-file-name="GearBox.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/GearBox.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state relative-caret-position="159">
+              <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+              <folding>
+                <element signature="e#413#414#0" expanded="true" />
+                <element signature="e#450#451#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,10 +188,13 @@
       <list>
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/GearHolder.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/sensors/ITG3200.java" />
-        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/DriveTrain.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/Climber.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/LightRing.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/Robot.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/Vision.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/DriveTrain.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/GearBox.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -212,33 +240,6 @@
               <item name="2017-Robot-Java-Test" type="b2602c69:ProjectViewProjectNode" />
               <item name="2017-Robot-Java-Test" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2017-Robot-Java-Test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2017-Robot-Java-Test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="robot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2017-Robot-Java-Test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2017-Robot-Java-Test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="robot" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2017-Robot-Java-Test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2017-Robot-Java-Test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="robot" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2017-Robot-Java-Test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2017-Robot-Java-Test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="robot" type="462c0819:PsiDirectoryNode" />
-              <item name="sensors" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -336,7 +337,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -350,9 +350,10 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49842766" visible="true" weight="0.27306002" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49612403" visible="true" weight="0.27306002" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32868218" />
       <window_info anchor="right" id="Gradle" order="5" />
-      <window_info id="Structure" order="1" sideWeight="0.5015723" side_tool="true" weight="0.32599118" />
+      <window_info id="Structure" order="1" sideWeight="0.503876" side_tool="true" weight="0.27306002" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="6" />
@@ -363,7 +364,6 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32868218" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -399,6 +399,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#450#451#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -460,29 +464,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/GearBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/sensors/ITG3200.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/DriveTrain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1335#1336#0" expanded="true" />
-            <element signature="e#1366#1367#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -499,7 +484,7 @@
     <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/Climber.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
           <folding>
             <element signature="e#686#687#0" expanded="true" />
             <element signature="e#708#709#0" expanded="true" />
@@ -510,7 +495,7 @@
     <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/LightRing.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
           <folding>
             <element signature="e#697#698#0" expanded="true" />
             <element signature="e#728#729#0" expanded="true" />
@@ -520,8 +505,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/Robot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4693">
-          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="48" />
+        <state relative-caret-position="144">
+          <caret line="235" column="29" selection-start-line="235" selection-start-column="29" selection-end-line="235" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1069#1070#0" expanded="true" />
@@ -529,6 +514,43 @@
             <element signature="e#1251#1252#0" expanded="true" />
             <element signature="e#1274#1275#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/DriveTrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="209" column="28" selection-start-line="209" selection-start-column="28" selection-end-line="209" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/components/GearBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding>
+            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#450#451#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4237/robot/Vision.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
         </state>
       </provider>
     </entry>

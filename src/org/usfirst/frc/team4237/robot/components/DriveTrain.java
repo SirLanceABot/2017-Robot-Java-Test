@@ -3,16 +3,11 @@ package org.usfirst.frc.team4237.robot.components;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.StatusFrame;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import edu.wpi.first.wpilibj.RobotDrive;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import org.usfirst.frc.team4237.robot.Util;
 import org.usfirst.frc.team4237.robot.sensors.ITG3200;
-
-import com.ctre.CANTalon;
-import edu.wpi.first.wpilibj.I2C;
 
 public class DriveTrain extends DifferentialDrive
 {
@@ -91,14 +86,14 @@ public class DriveTrain extends DifferentialDrive
 		{
 			notDoneDriving();
 			resetEncoders();
-			Util.wait(0.1);
+			Timer.delay(0.1);
 			arcadeDrive(0, speed);
 		}
 		else if (getDistance() >= (angle / 360.0) * Constants.WHEEL_BASE_CIRCUMFERENCE);
 		{
 			stopDriving();
 			resetEncoders();
-			Util.wait(0.1);
+			Timer.delay(0.1);
 			doneDriving();
 		}
 		return isDoneDriving();
@@ -206,14 +201,14 @@ public class DriveTrain extends DifferentialDrive
 		{
 			notDoneDriving();
 			resetEncoders();
-			Util.wait(0.1);
+			Timer.delay(0.1);
 			arcadeDrive(speed, 0.0);
 		}
 		else if (getDistance() >= distance)
 		{
 			stopDriving();
 			resetEncoders();
-			Util.wait(0.1);
+			Timer.delay(0.1);
 			doneDriving();
 		}
 		return isDoneDriving();

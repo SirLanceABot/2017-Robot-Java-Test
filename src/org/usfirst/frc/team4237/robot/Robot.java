@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4237.robot;
 
+import edu.wpi.first.wpilibj.*;
 import org.usfirst.frc.team4237.robot.components.Climber;
 import org.usfirst.frc.team4237.robot.components.DriveTrain;
 import org.usfirst.frc.team4237.robot.components.GearBox;
@@ -8,11 +9,6 @@ import org.usfirst.frc.team4237.robot.components.LightRing;
 import org.usfirst.frc.team4237.robot.control.DriverXbox;
 import org.usfirst.frc.team4237.robot.control.Xbox;
 import org.usfirst.frc.team4237.robot.sensors.ITG3200;
-
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.IterativeRobot;
 
 /**
  * Main robot class
@@ -56,9 +52,10 @@ public class Robot extends IterativeRobot
 	private GearHolder gearHolder = GearHolder.getInstance();
 	private Climber climber = Climber.getInstance();
 	private Vision vision;
-	private Compressor compressor = new Compressor();
 	private DriverStation driverStation = DriverStation.getInstance();
 	private LightRing lightRing = LightRing.getInstance();
+	private Compressor compressor = new Compressor();
+
 
 	private VisionStage visionStage;
 	private AutoGearChoice gearPosition;
@@ -196,12 +193,12 @@ public class Robot extends IterativeRobot
 		drivetrain.setSafetyEnabled(false);
 		drivetrain.setControlModeVoltage();
 		drivetrain.downShift();
-		Util.wait(0.1);
+		Timer.delay(0.1);
 		autoDrive();
 		
 		//TODO Stop vision thread here
 		
-		Util.wait(0.5);
+		Timer.delay(0.5);
 		drivetrain.upShift();
 	}
 
@@ -236,7 +233,7 @@ public class Robot extends IterativeRobot
 		case kLeft:
 			drivetrain.driveDistance(Autonomous.SIDE_SPEED, 70);
 			drivetrain.spinCW(Autonomous.TURN_SPEED, 55);
-			Util.wait(0.2);
+			Timer.delay(0.5);
 			runVision();
 			drivetrain.stopDriving();
 			drivetrain.makeIsDoneDrivingTrue();

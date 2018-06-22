@@ -55,7 +55,6 @@ public class Vision
 
 	public Vision()
 	{
-		Util.printObjectInfo(this);
 		mUsePiTimer = new Timer();
 		mNetworkTable = NetworkTable.getTable("GRIP/vision");
 		mMidpointX = -9999;

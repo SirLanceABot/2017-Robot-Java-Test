@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4237.robot.components;
 
-import org.usfirst.frc.team4237.robot.Util;
-
 import edu.wpi.first.wpilibj.DigitalOutput;
 
 /**
