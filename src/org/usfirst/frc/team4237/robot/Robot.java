@@ -8,7 +8,6 @@ import org.usfirst.frc.team4237.robot.components.GearHolder;
 import org.usfirst.frc.team4237.robot.components.LightRing;
 import org.usfirst.frc.team4237.robot.control.DriverXbox;
 import org.usfirst.frc.team4237.robot.control.Xbox;
-import org.usfirst.frc.team4237.robot.sensors.ITG3200;
 
 /**
  * Main robot class
@@ -44,7 +43,6 @@ public class Robot extends IterativeRobot
 	}
 
 	public static final I2C.Port SIX_DOF = I2C.Port.kMXP;
-	public static final double SENSITIVITY = ITG3200.Constants.SENSITIVITY_SCALE_FACTOR;
 	public static final int NUM_TAPS = 20;
 
 	private DriverXbox xbox = DriverXbox.getInstance();
@@ -110,7 +108,7 @@ public class Robot extends IterativeRobot
 		//A giant try-catch loop is the new way to do things
 		try
 		{
-			move = xbox.getRawAxis(Xbox.Constants.LEFT_STICK_Y_AXIS);
+			move = -xbox.getRawAxis(Xbox.Constants.LEFT_STICK_Y_AXIS);
 			rotate = xbox.getRawAxis(Xbox.Constants.RIGHT_STICK_X_AXIS);
 
 			if (Math.abs(move) < 0.05)

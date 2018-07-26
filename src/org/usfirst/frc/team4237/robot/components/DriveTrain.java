@@ -7,7 +7,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import org.usfirst.frc.team4237.robot.sensors.ITG3200;
 
 public class DriveTrain extends DifferentialDrive
 {
@@ -21,7 +20,6 @@ public class DriveTrain extends DifferentialDrive
 
 	private boolean isDoneDriving = false;
 
-    private ITG3200 gyro = ITG3200.getInstance();
 
     private static DriveTrain instance = new DriveTrain();
 	public static DriveTrain getInstance()
@@ -37,12 +35,12 @@ public class DriveTrain extends DifferentialDrive
 		rightFollowerMotor.follow(rightMasterMotor);
 
 		rightMasterMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
-		rightMasterMotor.setInverted(true);
+		rightMasterMotor.setInverted(false);
 		//FIXME: Problems porting below line to Phoenix
 		//rightMasterMotor.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 8);
 
 		leftMasterMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
-		leftMasterMotor.setInverted(true);
+		leftMasterMotor.setInverted(false);
 		//FIXME: Problems porting below line to Phoenix
 		//leftMasterMotor.setStatusFrameRateMs(CANTalon.StatusFrameRate.Feedback, 8);
 
@@ -101,98 +99,17 @@ public class DriveTrain extends DifferentialDrive
 	
 	public void spinCCW(double speed, double angle)
 	{
-		if (gyro.isWorking())
-		{
-			if(isDoneDriving())
-			{
-				doneDriving();
-				resetGyro();
-				arcadeDrive(0.0, speed);
-			}
-		}
+		
 	}
 	
 	public void newSpinCW(double speed, double angle)
 	{
-		if (gyro.isWorking())
-		{
-			if (isDoneDriving())
-			{
-				notDoneDriving();
-				resetGyro();
-				tankDrive(speed, -speed);
-			}
-			else if (Math.abs(gyro.getZ()) >= angle)
-			{
-				stopDriving();
-				doneDriving();
-			}
-			else
-			{
-				tankDrive(speed, -speed);
-			}
-		}
-		else
-		{
-			if (isDoneDriving())
-			{
-				notDoneDriving();
-				resetEncoders();
-				tankDrive(speed, -speed);
-			}
-			else if (Math.abs(leftMasterMotor.getSelectedSensorPosition(0)) >= (angle / 360) * Constants.WHEEL_BASE_CIRCUMFERENCE || Math.abs(rightMasterMotor.getSelectedSensorPosition(0)) >= (angle / 360.0) * Constants.WHEEL_BASE_CIRCUMFERENCE)
-			{
-				stopDriving();
-				resetEncoders();
-				doneDriving();
-			}
-			else
-			{
-				tankDrive(speed, -speed);
-			}
-		}
+		
 	}
 	
 	public void newSpinCCW(double speed, double angle)
 	{
-		if (gyro.isWorking())
-		{
-			if (isDoneDriving())
-			{
-				notDoneDriving();
-				resetGyro();
-				tankDrive(-speed, speed);
-			}
-			else if (Math.abs(gyro.getZ()) >= angle)
-			{
-				stopDriving();
-				doneDriving();
-			}
-			else
-			{
-				tankDrive(-speed, speed);
-			}
-		}
-		else
-		{
-			if (isDoneDriving())
-			{
-				notDoneDriving();
-				resetEncoders();
-				tankDrive(-speed, speed);
-			}
-			else if (Math.abs(leftMasterMotor.getSelectedSensorPosition(0)) >= (angle / 360) * Constants.WHEEL_BASE_CIRCUMFERENCE ||
-					Math.abs(rightMasterMotor.getSelectedSensorPosition(0)) >= (angle / 360.0) * Constants.WHEEL_BASE_CIRCUMFERENCE)
-			{
-				stopDriving();
-				resetEncoders();
-				doneDriving();
-			}
-			else
-			{
-				tankDrive(-speed, speed);
-			}
-		}
+		
 	}
 	
 	public boolean driveDistance(double speed, double distance)
@@ -292,7 +209,7 @@ public class DriveTrain extends DifferentialDrive
 	
 	public boolean isGyroWorking()
 	{
-		return gyro.isWorking();
+		return false;
 	}
 	
 	public boolean isDoneDriving()
@@ -319,12 +236,11 @@ public class DriveTrain extends DifferentialDrive
 	public void setGyroAngle(double angleX, double angleY, double angleZ)
 	{
 		double[] angle = {angleX, angleY, angleZ};
-		this.gyro.setAngle(angle);
 	}
 	
 	public double getZ()
 	{
-		return this.gyro.getZ();
+		return 0.0;
 	}
 	
 	public void resetGyro()
